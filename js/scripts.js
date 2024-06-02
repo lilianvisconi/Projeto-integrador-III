@@ -9,7 +9,12 @@ $(document).ready(function () {
         if (username === '' || password === '') {
             alert('Por favor, preencha todos os campos.');
         } else {
-            window.location.href = 'home.html';
+            // Verificação simples de credenciais (para fins de demonstração)
+            if (username === 'admin' && password === 'admin') {
+                window.location.href = 'home.html';
+            } else {
+                alert('Usuário ou senha incorretos.');
+            }
         }
     });
 
