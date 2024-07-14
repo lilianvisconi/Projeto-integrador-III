@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos - Estúdio de Pilates</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+    <h1>Agendamentos</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/listarClientes">Clientes</a>
+        <a href="/listarRelatorios">Relatórios</a>
+    </nav>
+</header>
+
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Data/Hora</th>
+            <th>Tipo</th>
+        </tr>
+        </thead>
+        <tbody id="agendamento-table-body">
+        <!-- Agendamentos serão carregados aqui -->
+        </tbody>
+    </table>
+</main>
+<footer>
+    <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/listarAgendamentos.js"></script>
+</body>
+</html>
