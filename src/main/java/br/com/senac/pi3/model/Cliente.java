@@ -12,6 +12,7 @@ public class Cliente {
     private String nome;
     private String email;
     private String telefone;
+    private String cpf;
 
     // Getters e Setters
 
@@ -47,6 +48,14 @@ public class Cliente {
         this.telefone = telefone;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +
@@ -54,6 +63,7 @@ public class Cliente {
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
+                ", cpf='" + cpf + '\'' +
                 '}';
     }
 }

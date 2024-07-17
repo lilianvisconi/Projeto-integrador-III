@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes - Estúdio de Pilates</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-
 <body>
 <header>
     <h1>Clientes</h1>
@@ -17,29 +15,28 @@
         <a href="/listarRelatorios">Relatórios</a>
     </nav>
 </header>
-
 <main>
-    <h2>Gerenciamento de Clientes</h2>
-    <form id="addClientForm">
-        <label for="clientName">Nome:</label>
-        <input type="text" id="clientName" name="clientName">
-        <label for="clientEmail">Email:</label>
-        <input type="email" id="clientEmail" name="clientEmail">
-        <button type="submit">Adicionar Cliente</button>
-    </form>
-    <h3>Lista de Clientes</h3>
+    <h2>Lista de Clientes</h2>
+    <div>
+        <label for="searchName">Pesquisar Cliente por Nome:</label>
+        <input type="text" id="searchName" name="searchName">
+        <button id="search-btn">Pesquisar</button>
+    </div>
     <table id="cliente-table">
         <thead>
         <tr>
             <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
             <th>Email</th>
             <th>Ações</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Dados de clientes serão inseridos aqui dinamicamente -->
         <tr th:each="cliente : ${clientes}">
             <td th:text="${cliente.nome}">Nome do Cliente</td>
+            <td th:text="${cliente.cpf}">CPF do Cliente</td>
+            <td th:text="${cliente.telefone}">Telefone do Cliente</td>
             <td th:text="${cliente.email}">Email do Cliente</td>
             <td>
                 <button class="editar-btn" th:attr="data-id=${cliente.id}">Editar</button>
@@ -48,6 +45,7 @@
         </tr>
         </tbody>
     </table>
+    <button id="add-client-btn">Adicionar Cliente</button>
 </main>
 <footer>
     <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>

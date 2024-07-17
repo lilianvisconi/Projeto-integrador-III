@@ -20,6 +20,11 @@ public class MiscController {
         return "listarClientes";
     }
 
+    @GetMapping("/gerenciarCliente")
+    public String gerenciarCliente() {
+        return "gerenciarCliente";
+    }
+
     @GetMapping("/listarRelatorios")
     public String listarRelatorios() {
         return "listarRelatorios";

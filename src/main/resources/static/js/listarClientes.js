@@ -2,28 +2,9 @@ $(document).ready(function() {
     // Carregar clientes ao carregar a página
     carregarClientes();
 
-    // Adicionar cliente
-    $('#addClientForm').submit(function(event) {
-        event.preventDefault();
-
-        let nome = $('#clientName').val();
-        let email = $('#clientEmail').val();
-
-        $.ajax({
-            url: "/api/clientes",
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ nome: nome, email: email }),
-            success: function(response) {
-                $('#clientName').val('');
-                $('#clientEmail').val('');
-                carregarClientes(); // Recarrega a lista de clientes após adicionar
-            },
-            error: function(error) {
-                console.error("Erro ao adicionar cliente:", error);
-                alert("Erro ao adicionar cliente. Verifique o console para mais detalhes.");
-            }
-        });
+    // Redirecionar para a página de adicionar cliente
+    $('#add-client-btn').click(function() {
+        window.location.href = '/gerenciarCliente';
     });
 
     // Função para carregar clientes
@@ -32,35 +13,36 @@ $(document).ready(function() {
             url: "/api/clientes",
             method: "GET",
             success: function(data) {
-                let tableBody = $('#cliente-table tbody');
-                tableBody.empty();
-                data.forEach(cliente => {
-                    tableBody.append(`
-                        <tr>
-                            <td>${cliente.nome}</td>
-                            <td>${cliente.email}</td>
-                            <td>
-                                <button class="editar-btn" data-id="${cliente.id}">Editar</button>
-                                <button class="excluir-btn" data-id="${cliente.id}">Excluir</button>
-                            </td>
-                        </tr>
-                    `);
-                });
+                atualizarTabelaClientes(data);
             },
             error: function(error) {
                 console.error("Erro ao carregar os clientes:", error);
-                $('#cliente-table tbody').append('<tr><td colspan="3">Erro ao carregar os clientes.</td></tr>');
+                $('#cliente-table tbody').append('<tr><td colspan="5">Erro ao carregar os clientes.</td></tr>');
             }
         });
     }
 
-    // Exemplo de como implementar as funções de editar e excluir
-    $('#cliente-table').on('click', '.editar-btn', function() {
-        let clienteId = $(this).attr('data-id');
-        // Implemente a lógica de edição aqui, se necessário
-        alert(`Editar cliente com ID ${clienteId}`);
-    });
+    // Função para atualizar a tabela de clientes
+    function atualizarTabelaClientes(clientes) {
+        let tableBody = $('#cliente-table tbody');
+        tableBody.empty();
+        clientes.forEach(cliente => {
+            tableBody.append(`
+                <tr>
+                    <td>${cliente.nome}</td>
+                    <td>${cliente.cpf}</td>
+                    <td>${cliente.telefone}</td>
+                    <td>${cliente.email}</td>
+                    <td>
+                        <button class="editar-btn" data-id="${cliente.id}">Editar</button>
+                        <button class="excluir-btn" data-id="${cliente.id}">Excluir</button>
+                    </td>
+                </tr>
+            `);
+        });
+    }
 
+    // Função para excluir cliente
     $('#cliente-table').on('click', '.excluir-btn', function() {
         let clienteId = $(this).attr('data-id');
         if (confirm(`Deseja realmente excluir o cliente com ID ${clienteId}?`)) {
@@ -76,5 +58,27 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+
+    // Redirecionar para a página de editar cliente
+    $('#cliente-table').on('click', '.editar-btn', function() {
+        let clienteId = $(this).attr('data-id');
+        window.location.href = `/gerenciarCliente?id=${clienteId}`;
+    });
+
+    // Pesquisar cliente por nome
+    $('#search-btn').click(function() {
+        let nome = $('#searchName').val();
+        $.ajax({
+            url: `/api/clientes?nome=${nome}`,
+            method: "GET",
+            success: function(data) {
+                atualizarTabelaClientes(data);
+            },
+            error: function(error) {
+                console.error("Erro ao pesquisar clientes:", error);
+                $('#cliente-table tbody').append('<tr><td colspan="5">Erro ao pesquisar clientes.</td></tr>');
+            }
+        });
     });
 });

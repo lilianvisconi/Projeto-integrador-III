@@ -34,7 +34,9 @@ nav a {
 }
 
 main {
+    align: center;
     padding: 2rem;
+    text-align: center;
 }
 
 footer {
@@ -82,4 +84,10 @@ td {
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+.intro-img-small {
+    max-width: 350px;
+    height: auto;
+    margin-bottom: 20px;
 }
