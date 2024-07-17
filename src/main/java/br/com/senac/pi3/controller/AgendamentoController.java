@@ -15,7 +15,10 @@ public class AgendamentoController {
     private AgendamentoRepository agendamentoRepository;
 
     @GetMapping
-    public List<Agendamento> getAllAgendamentos() {
+    public List<Agendamento> getAllAgendamentos(@RequestParam(required = false) String nome) {
+        if (nome != null) {
+            return agendamentoRepository.findByClienteNomeContainingIgnoreCase(nome);
+        }
         return agendamentoRepository.findAll();
     }
 
@@ -29,11 +32,10 @@ public class AgendamentoController {
         return agendamentoRepository.findById(id).orElseThrow(() -> new RuntimeException("Agendamento not found"));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public Agendamento updateAgendamento(@PathVariable Long id, @RequestBody Agendamento agendamentoDetails) {
         Agendamento agendamento = agendamentoRepository.findById(id).orElseThrow(() -> new RuntimeException("Agendamento not found"));
 
-        agendamento.setCliente(agendamentoDetails.getCliente());
         agendamento.setDataHora(agendamentoDetails.getDataHora());
         agendamento.setTipo(agendamentoDetails.getTipo());
 

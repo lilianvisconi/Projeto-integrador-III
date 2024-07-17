@@ -15,6 +15,11 @@ public class MiscController {
         return "listarAgendamentos";
     }
 
+    @GetMapping("/gerenciarAgendamento")
+    public String gerenciarAgendamento() {
+        return "gerenciarAgendamento";
+    }
+
     @GetMapping("/listarClientes")
     public String listarClientes() {
         return "listarClientes";

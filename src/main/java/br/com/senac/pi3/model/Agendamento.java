@@ -11,13 +11,17 @@ public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
     @Column(name = "data_hora")
     private LocalDateTime dataHora;
+
     private String tipo;
 
     // Getters e Setters
-
     public Long getId() {
         return id;
     }
@@ -26,11 +30,11 @@ public class Agendamento {
         this.id = id;
     }
 
-    public String getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
@@ -54,7 +58,7 @@ public class Agendamento {
     public String toString() {
         return "Agendamento{" +
                 "id=" + id +
-                ", cliente='" + cliente + '\'' +
+                ", cliente=" + cliente +
                 ", dataHora=" + dataHora +
                 ", tipo='" + tipo + '\'' +
                 '}';

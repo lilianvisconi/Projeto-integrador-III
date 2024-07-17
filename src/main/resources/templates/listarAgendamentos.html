@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamentos - Estúdio de Pilates</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-
 <body>
-
 <header>
     <h1>Agendamentos</h1>
     <nav>
@@ -18,20 +15,27 @@
         <a href="/listarRelatorios">Relatórios</a>
     </nav>
 </header>
-
 <main>
-    <table>
+    <h2>Lista de Agendamentos</h2>
+    <div>
+        <label for="searchName">Pesquisar Agendamento por Nome do Cliente:</label>
+        <input type="text" id="searchName" name="searchName">
+        <button id="search-btn">Pesquisar</button>
+    </div>
+    <table id="agendamento-table">
         <thead>
         <tr>
             <th>Cliente</th>
             <th>Data/Hora</th>
             <th>Tipo</th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody id="agendamento-table-body">
         <!-- Agendamentos serão carregados aqui -->
         </tbody>
     </table>
+    <button id="add-agendamento-btn">Adicionar Agendamento</button>
 </main>
 <footer>
     <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>
