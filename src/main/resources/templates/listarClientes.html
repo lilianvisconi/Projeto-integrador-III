@@ -8,17 +8,18 @@
 </head>
 <body>
 <header>
-    <h1>Clientes</h1>
+    <h1>Estúdio de Pilates</h1>
     <nav>
         <a href="/">Home</a>
         <a href="/listarAgendamentos">Agendamentos</a>
+        <a href="/logout">Logout</a>
     </nav>
 </header>
 <main>
     <h2>Lista de Clientes</h2>
     <div>
         <label for="searchName">Pesquisar Cliente por Nome:</label>
-        <input type="text" id="searchName" name="searchName">
+        <input type="text" id="searchName" name="searchName" required>
         <button id="search-btn">Pesquisar</button>
     </div>
     <table id="cliente-table">

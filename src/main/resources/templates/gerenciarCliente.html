@@ -8,11 +8,12 @@
 </head>
 <body>
 <header>
-    <h1>Gerenciar Cliente</h1>
+    <h1>Estúdio de Pilates</h1>
     <nav>
         <a href="/">Home</a>
         <a href="/listarClientes">Clientes</a>
         <a href="/listarAgendamentos">Agendamentos</a>
+        <a href="/logout">Logout</a>
     </nav>
 </header>
 <main>
@@ -20,13 +21,13 @@
     <form id="clientForm">
         <input type="hidden" id="clientId" name="clientId">
         <label for="clientName">Nome:</label>
-        <input type="text" id="clientName" name="clientName">
+        <input type="text" id="clientName" name="clientName" required>
         <label for="clientCpf">CPF:</label>
-        <input type="text" id="clientCpf" name="clientCpf">
+        <input type="text" id="clientCpf" name="clientCpf" required>
         <label for="clientTelefone">Telefone:</label>
-        <input type="text" id="clientTelefone" name="clientTelefone">
+        <input type="text" id="clientTelefone" name="clientTelefone" required>
         <label for="clientEmail">Email:</label>
-        <input type="email" id="clientEmail" name="clientEmail">
+        <input type="email" id="clientEmail" name="clientEmail" required>
         <button type="submit">Salvar Cliente</button>
     </form>
 </main>

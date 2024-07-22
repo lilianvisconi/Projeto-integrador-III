@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+    public static final String USER = "user";
+    public static final String PASSWORD = "password";
+
     @GetMapping("/login")
     public String loginPage() {
         return "login";
@@ -17,7 +20,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model, HttpSession session) {
-        if ("user".equals(username) && "password".equals(password)) {
+        if (USER.equals(username) && PASSWORD.equals(password)) {
             session.setAttribute("user", username);
             return "redirect:/";
         } else {
