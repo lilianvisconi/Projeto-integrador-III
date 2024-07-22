@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Agendamento - Estúdio de Pilates</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Estúdio de Pilates</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/listarClientes">Clientes</a>
+        <a href="/listarAgendamentos">Agendamentos</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    <h2 th:text="${agendamento != null ? 'Editar Agendamento' : 'Adicionar Agendamento'}"></h2>
+    <form id="agendamento-form">
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" th:value="${agendamento != null ? agendamento.cliente.nome : ''}"
+               required>
+
+        <label for="dataHora">Data/Hora:</label>
+        <input type="datetime-local" id="dataHora" name="dataHora"
+               th:value="${agendamento != null ? agendamento.dataHora : ''}" required>
+
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="Individual" th:selected="${agendamento != null && agendamento.tipo == 'Individual'}">
+                Individual
+            </option>
+            <option value="Grupo" th:selected="${agendamento != null && agendamento.tipo == 'Grupo'}">Grupo</option>
+        </select>
+
+        <button type="submit">Salvar Agendamento</button>
+    </form>
+    <br/>
+    <button id="cancel-btn">Cancelar</button>
+</main>
+<footer>
+    <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/gerenciarAgendamento.js"></script>
+</body>
+</html>

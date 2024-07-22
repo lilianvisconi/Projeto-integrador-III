@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Cliente - Estúdio de Pilates</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Estúdio de Pilates</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/listarClientes">Clientes</a>
+        <a href="/listarAgendamentos">Agendamentos</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    <h2>Adicionar/Editar Cliente</h2>
+    <form id="clientForm">
+        <input type="hidden" id="clientId" name="clientId">
+        <label for="clientName">Nome:</label>
+        <input type="text" id="clientName" name="clientName" required>
+        <label for="clientCpf">CPF:</label>
+        <input type="text" id="clientCpf" name="clientCpf" required>
+        <label for="clientTelefone">Telefone:</label>
+        <input type="text" id="clientTelefone" name="clientTelefone" required>
+        <label for="clientEmail">Email:</label>
+        <input type="email" id="clientEmail" name="clientEmail" required>
+        <button type="submit">Salvar Cliente</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/gerenciarCliente.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - Estúdio de Pilates</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Estúdio de Pilates</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/listarAgendamentos">Agendamentos</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    <h2>Lista de Clientes</h2>
+    <div>
+        <label for="searchName">Pesquisar Cliente por Nome:</label>
+        <input type="text" id="searchName" name="searchName" required>
+        <button id="search-btn">Pesquisar</button>
+    </div>
+    <table id="cliente-table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente : ${clientes}">
+            <td th:text="${cliente.nome}">Nome do Cliente</td>
+            <td th:text="${cliente.cpf}">CPF do Cliente</td>
+            <td th:text="${cliente.telefone}">Telefone do Cliente</td>
+            <td th:text="${cliente.email}">Email do Cliente</td>
+            <td>
+                <button class="editar-btn" th:attr="data-id=${cliente.id}">Editar</button>
+                <button class="excluir-btn" th:attr="data-id=${cliente.id}">Excluir</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button id="add-client-btn">Adicionar Cliente</button>
+</main>
+<footer>
+    <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/listarClientes.js"></script>
+</body>
+</html>

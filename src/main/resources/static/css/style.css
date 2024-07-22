@@ -1,10 +1,22 @@
 /* style.css */
 
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 header,
@@ -33,8 +45,15 @@ nav a {
     text-decoration: none;
 }
 
+nav a:hover {
+    text-decoration: underline;
+}
+
 main {
+    flex: 1;
     padding: 2rem;
+    text-align: center;
+    overflow-y: auto;
 }
 
 footer {
@@ -49,6 +68,10 @@ button {
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
+}
+
+label{
+    align: left;
 }
 
 button:hover {
@@ -82,4 +105,10 @@ td {
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+.intro-img-small {
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 20px;
 }

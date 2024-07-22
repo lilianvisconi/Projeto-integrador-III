@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Estúdio de Pilates</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Estúdio de Pilates</h1>
+    <nav>
+        <a href="/listarAgendamentos">Agendamentos</a>
+        <a href="/listarClientes">Clientes</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<main>
+    <h2>Bem-vindo ao Estúdio de Pilates</h2>
+    <img src="/images/estudio_pilates.jpg" alt="Estúdio de Pilates" class="intro-img-small">
+</main>
+<footer>
+    <p>&copy; 2024 Estúdio de Pilates. Todos os direitos reservados.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
